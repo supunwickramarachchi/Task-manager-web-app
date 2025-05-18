@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-green-100 flex items-center justify-center px-4">
+  <div class="w-full max-w-2xl bg-white/60 backdrop-blur-md border border-white/30 shadow-xl rounded-2xl p-8 text-center transition-all duration-300">
+    
+    {% if user.is_authenticated %}
+      <h2 class="text-3xl font-bold text-gray-800 mb-4 animate-fade-in">
+        Hello, <span class="text-blue-600">{{ user.username }}</span>! 👋
+      </h2>
+      <p class="text-gray-600 mb-6 text-lg">
+        Welcome back! You can view all your tasks below.
+      </p>
+      <a href="{% url 'task_list' %}"
+         class="inline-flex items-center gap-2 bg-green-500 text-white px-5 py-3 rounded-lg hover:bg-green-600 transition duration-200 shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-2-8h2m-6 0h.01M5 12h.01M5 16h.01M5 8h.01" />
+        </svg>
+        View All Tasks
+      </a>
+
+    {% else %}
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4">
+        👋 Welcome to Task Manager!
+      </h2>
+      <p class="text-lg text-gray-600">
+        You need to be logged in to view your tasks.
+      </p>
+
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="{% url 'login' %}"
+           class="w-full sm:w-auto bg-blue-500 text-white px-5 py-3 rounded-lg hover:bg-blue-600 transition duration-200 shadow-md">
+          Login
+        </a>
+        <a href="{% url 'signup' %}"
+           class="w-full sm:w-auto bg-green-500 text-white px-5 py-3 rounded-lg hover:bg-green-600 transition duration-200 shadow-md">
+          Sign Up
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock content %}

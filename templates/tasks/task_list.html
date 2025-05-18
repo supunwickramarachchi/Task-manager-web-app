@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto mt-10">
+  <!-- Search Form -->
+  <form action="{% url 'task_list' %}" method="get" class="mb-6">
+    <div class="flex">
+      <input type="text" name="q" placeholder="Search by title or priority"
+        value="{{ request.GET.q }}"
+        class="w-full p-2 border border-gray-300 rounded-l-md"
+      >
+      <button type="submit" class="bg-blue-500 text-white px-4 rounded-r-md">Search</button>
+    </div>
+  </form>
+
+  <!-- Task List -->
+  <div class="mb-4">
+    <a href="{% url 'task_create' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">+ Add Task</a>
+  </div>
+
+  <ul class="space-y-2">
+    {% for task in tasks %}
+    <li class="p-4 bg-white rounded shadow flex items-center justify-between">
+      <form method="POST" action="{% url 'task_toggle' task.pk %}">
+        {% csrf_token %}
+        <input type="checkbox" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+      </form>
+      <div class="ml-4 flex-1">
+        <h3 class="text-lg font-semibold {% if task.completed %}line-through text-gray-400{% endif %}">
+          {{ task.title }}
+        </h3>
+        <p class="text-sm text-gray-500">{{ task.priority }} Priority</p>
+      </div>
+      <div class="space-x-2">
+        <a href="{% url 'task_update' task.pk %}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Edit</a>
+        <a href="{% url 'task_delete' task.pk %}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete</a>
+      </div>
+    </li>
+    {% empty %}
+    <li class="text-gray-500">No tasks found.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

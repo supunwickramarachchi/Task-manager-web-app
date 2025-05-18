@@ -46,11 +46,11 @@ A beautifully designed full-featured **Task Management System** built with **Dja
 ---
 
 ## 🛠️ App Screenshots
-* [Home Page](screenshots/home.PNG)
-* [Task List Page](screenshots/tasks_list.PNG)
-* [Login Page](screenshots/login.PNG)
-* [Logout View](screenshots/logout_view.PNG)
-* [Signup Page](screenshots/signup.PNG)
+![Home Page](screenshots/home.PNG)
+![Task List Page](screenshots/tasks_list.PNG)
+![Login Page](screenshots/login.PNG)
+![Logout View](screenshots/logout_view.PNG)
+![Signup Page](screenshots/signup.PNG)
 ---
 
 ## 📚 What I Learned From This Project

@@ -110,8 +110,6 @@ python manage.py runserver
 ## ✨ Future Improvements
  - Add task filtering (by priority/completion)
 
- - Search bar for tasks
-
  - Task deadlines with alerts
 
  - REST API with Django REST Framework

@@ -1,0 +1,31 @@
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+
+# 🚫 Environment
+.env
+*.env
+
+# 🔑 Django secret files
+db.sqlite3
+*.log
+
+# 💻 OS-specific
+.DS_Store
+Thumbs.db
+
+# 📦 Virtualenv
+venv/
+env/
+ENV/
+
+# 💡 VS Code
+.vscode/
+
+# 🔗 Migrations (optional – only if you don't want to share them)
+# ** Only if you want each team member to create their own migrations **
+# */migrations/
